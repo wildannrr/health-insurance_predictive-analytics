@@ -283,8 +283,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 Bagian ini bertujuan untuk membangun model machine learning menggunakan algoritma yang sesuai dan meningkatkan kinerjanya melalui proses tuning. Model dikembangkan, dievaluasi, dan disempurnakan dengan memilih kombinasi parameter terbaik menggunakan teknik seperti Grid Search.
 
 ### Linear Regression
-Linear Regression adalah algoritma yang menyediakan hubungan linier antara variabel independen dan variabel dependen untuk memprediksi hasil kejadian di masa mendatang. Ini adalah metode statistik yang digunakan dalam ilmu data dan pembelajaran mesin untuk analisis prediktif.
-Variabel bebas juga merupakan variabel prediktor atau penjelas yang tetap tidak berubah karena perubahan variabel lain. Namun, variabel dependen berubah seiring dengan fluktuasi variabel bebas. Model regresi memprediksi nilai variabel dependen, yang merupakan variabel respons atau hasil yang dianalisis atau dipelajari.[[5](https://www.spiceworks.com/tech/artificial-intelligence/articles/what-is-linear-regression/)]
+Linear Regression adalah metode statistik yang berfungsungsi untuk menguji sejauh mana hubungan sebab akibat antar variabel faktor penyebab (X) terhadap variabel akibatnya, Faktor penyebab pada umumnya dilambangkan dengan x atau disebut juga dengan prediktor. sedangkan variabel akibat dilambangkan dengan y atau disebut juga dengan respon.[[5](https://jurnal.unived.ac.id/index.php/jmi/article/view/1149)]
 
 **Tahapan Pemodelan**
   - `lr_model = LinearRegression()`: Inisialisasi model
@@ -472,30 +471,15 @@ Berdasarkan hasil evaluasi:
 
 ## Referensi
 
-**[1]** L. Hafsah, “Gambaran tingkat kecemasan pada pasien kanker yang menjalani kemoterapi di RSUD Dr. M. Yunus Bengkulu,” *J. Vokasi Keperawatan (JVK)*, vol. 5, no. 1, pp. 21–28, 2022.  
+**[1]** Kang, Haotian & Xin, Runyan. (2024). Health Insurance Factor Analysis. Advances in Economics, Management and Political Sciences. 106. 200-211. 10.54254/2754-1169/106/20241590. 
 
-**[2]** UGM, “Jumlah penderita kanker terus meningkat, kenali gejala awal untuk deteksi dini,” *Universitas Gadjah Mada*, 2023. [Online]. Available: https://ugm.ac.id/id/berita/jumlah-penderita-kanker-terus-meningkat-kenali-gejala-awal-untuk-deteksi-dini/. [Accessed: May 13, 2024].  
+**[2]** M. M. Billa and T. Nagpal, "Medical Insurance Price Prediction Using Machine Learning," Journal of Electrical Systems, vol. 20, no. 7s, pp. 2270–2279, 2024. [Online]. Available: https://journal.esrgroups.org/jes/article/download/3962/3065/7574
 
-**[3]** M. T. T. B. Sirait, N. S. Fathonah, and M. N. Fauzan, “Pemanfaatan algoritma ADASYN dan support vector machine dalam meningkatkan akurasi prediksi kanker paru-paru,” *JATI (J. Mahasiswa Tek. Inform.)*, vol. 8, no. 5, pp. 8773–8778, 2024.  
+**[3]** Amazon Web Services. (n.d.). *What is linear regression?* Retrieved from https://aws.amazon.com/id/what-is/linear-regression/
 
-**[4]** I. P. Putri, T. Terttiaavini, and N. Arminarahmah, "Comparative analysis of machine learning algorithms for predicting child stunting," *MALCOM Indones. J. Mach. Learn. Comput. Sci.*, vol. 4, pp. 257–265, 2024.
+**[4]** Sinambela, D. P., Naparin, H., Zulfadhilah, M., & Hidayah, N. (2023). Implementasi Algoritma Decision Tree dan Random Forest dalam Prediksi Perdarahan Pascasalin . Jurnal Informasi Dan Teknologi, 5(3), 58-64. https://doi.org/10.60083/jidt.v5i3.393
 
-**[5]** D. P. Sinambela, H. Naparin, M. Zulfadhilah, and N. Hidayah, "Implementasi algoritma decision tree dan random forest dalam prediksi perdarahan pascasalin," *J. Inform. dan Teknol.*, pp. 58–64, 2023.
+**[5]** Trianggana, D. (2020). Peramalan Jumlah Siswa-Siswi Melalui Pendekatan Metode Regresi Linear. JURNAL MEDIA INFOTAMA, 16(2). https://doi.org/10.37676/jmi.v16i2.1149
 
-**[6]** H. Tuhuteru and A. Iriani, "Analisis sentimen Perusahaan Listrik Negara Cabang Ambon menggunakan metode support vector machine dan naive Bayes classifier," *J. Informatika: J. Pengembangan IT*, vol. 3, no. 3, pp. 394–401, 2018.
+**[6]**  Fadhilla, M, Wandri, R, Hanafiah, A, & ... (2025). Analisis Performa Algoritma Machine Learning Untuk Identifikasi Depresi Pada Mahasiswa. Journal of Informatics …, hostjournals.com, http://hostjournals.com/jimat/article/view/473
 
-**[7]** M. Syawaludin and M. Khulaimi, "Perancangan sistem pakar prediksi diagnosis penyakit diabetes menggunakan algoritma naive Bayes berbasis web," *Jikom: J. Informatika dan Komputer*, vol. 15, no. 1, pp. 161–171, 2025.
-
-**[8]** K. Handayani, E. Erni, B. Lailiah, and R. Sa'adah, "Klasifikasi kanker payudara menggunakan extra tree dengan SMOTE," *JATI (J. Mahasiswa Tek. Inform.)*, vol. 7, no. 6, pp. 3100–3105, 2023.
-
-**[9]** M. E. M. Zees, *Implementasi Autogluon dalam efisiensi model prediktif machine learning pada dataset International Business Machines (IBM) Human Resource (HR) Analytics Employee Attrition*, Doctoral dissertation, Universitas Islam Indonesia, 2023.
-
-**[10]** R. A. Effendy, *Eksplorasi algoritma tree based model untuk kasus tipe kepribadian dengan Myers Briggs Type Indicator (MBTI)*, Doctoral dissertation, Universitas Islam Indonesia, 2025.
-
-**[11]** M. Fadhilla, R. Wandri, A. Hanafiah, P. R. Setiawan, Y. Arta, and S. Daulay, "Analisis performa algoritma machine learning untuk identifikasi depresi pada mahasiswa," *J. Inform. Manag. dan Inf. Technol.*, vol. 5, no. 1, pp. 40–47, 2025.
-
-**[12]** A. Kesumawati, *Klasifikasi curah hujan menggunakan metode ensemble subset K-nearest neighbor (Studi kasus: Curah hujan Kota Bogor Tahun 2014–2018)*, 2020.
-
-**[13]** Scikit-learn, "Support vector machines," *scikit-learn*, 2024. [Online]. Available: https://scikit-learn.org/stable/modules/svm.html. [Accessed: May 13, 2024].
-
-**[14]** Scikit-learn, "Naive Bayes," *scikit-learn*, 2024. [Online]. Available: https://scikit-learn.org/stable/modules/naive_bayes.html. [Accessed: May 13, 2024].
