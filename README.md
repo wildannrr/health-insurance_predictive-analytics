@@ -284,7 +284,7 @@ Bagian ini bertujuan untuk membangun model machine learning menggunakan algoritm
 
 ### Linear Regression
 Linear Regression adalah algoritma yang menyediakan hubungan linier antara variabel independen dan variabel dependen untuk memprediksi hasil kejadian di masa mendatang. Ini adalah metode statistik yang digunakan dalam ilmu data dan pembelajaran mesin untuk analisis prediktif.
-Variabel bebas juga merupakan variabel prediktor atau penjelas yang tetap tidak berubah karena perubahan variabel lain. Namun, variabel dependen berubah seiring dengan fluktuasi variabel bebas. Model regresi memprediksi nilai variabel dependen, yang merupakan variabel respons atau hasil yang dianalisis atau dipelajari.[[4](https://www.spiceworks.com/tech/artificial-intelligence/articles/what-is-linear-regression/)]
+Variabel bebas juga merupakan variabel prediktor atau penjelas yang tetap tidak berubah karena perubahan variabel lain. Namun, variabel dependen berubah seiring dengan fluktuasi variabel bebas. Model regresi memprediksi nilai variabel dependen, yang merupakan variabel respons atau hasil yang dianalisis atau dipelajari.[[5](https://www.spiceworks.com/tech/artificial-intelligence/articles/what-is-linear-regression/)]
 
 **Tahapan Pemodelan**
   - `lr_model = LinearRegression()`: Inisialisasi model
@@ -310,7 +310,7 @@ Performance :
 Model ini menunjukkan hasil yang cukup baik di hubungan antar fitur bersifat linier. Namun, performanya bisa menurun bila ada non-linearitas atau interaksi kompleks antar fitur (pengaruh besar dari perokok terhadap biaya asuransi).
 
 ### Random Forest
-**Random Forest** adalah algoritma ensemble machine learning berbasis pohon keputusan yang digunakan untuk tugas klasifikasi maupun regresi. Algoritma ini bekerja dengan membangun sejumlah pohon keputusan (decision trees) selama proses pelatihan, lalu menggabungkan hasil prediksi dari setiap pohon. Dalam kasus klasifikasi, prediksi akhir ditentukan berdasarkan voting mayoritas dari seluruh pohon. Pendekatan ini secara efektif mengurangi risiko overfitting yang sering terjadi pada model pohon tunggal serta meningkatkan kemampuan generalisasi model. Dengan menyatukan banyak pohon yang relatif tidak berkorelasi, Random Forest mampu menghasilkan prediksi yang lebih stabil dan akurat [[11](https://hostjournals.com/jimat/article/view/473/289)].
+**Random Forest** adalah algoritma ensemble machine learning berbasis pohon keputusan yang digunakan untuk tugas klasifikasi maupun regresi. Algoritma ini bekerja dengan membangun sejumlah pohon keputusan (decision trees) selama proses pelatihan, lalu menggabungkan hasil prediksi dari setiap pohon. Dalam kasus klasifikasi, prediksi akhir ditentukan berdasarkan voting mayoritas dari seluruh pohon. Pendekatan ini secara efektif mengurangi risiko overfitting yang sering terjadi pada model pohon tunggal serta meningkatkan kemampuan generalisasi model. Dengan menyatukan banyak pohon yang relatif tidak berkorelasi, Random Forest mampu menghasilkan prediksi yang lebih stabil dan akurat [[6](https://hostjournals.com/jimat/article/view/473/289)].
 
 **Tahapan Pemodelan**
 1. Baseline Model
