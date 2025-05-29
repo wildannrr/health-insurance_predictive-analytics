@@ -151,10 +151,10 @@ Distribusi sangat miring ke kanan (right-skewed), dengan puncak utama di kisaran
 ---
 2. Multivariate Analysis
 <p align="center">
-  <img src="https://github.com/wildannrr/health-insurance_predictive-analytics/blob/main/assets/catt-charges_boxp.png" alt="Gambar 3. Box Plot" width="500"/>
+  <img src="https://github.com/wildannrr/health-insurance_predictive-analytics/blob/main/assets/catt-charges_boxp.png" alt="Gambar 4. Box Plot" width="500"/>
 </p>
 
-<p align="center"><strong>Gambar 3.</strong> Boxplot Analisis kategorikal terhadap fitur charges</p>
+<p align="center"><strong>Gambar 4.</strong> Boxplot Analisis kategorikal terhadap fitur charges</p>
 
 #### **Charges vs Smoker** :
 - Perokok (yes) memiliki biaya asuransi yang jauh lebih tinggi dibandingkan non-perokok.
@@ -185,10 +185,10 @@ Wilayah geografis hanya memiliki pengaruh kecil terhadap perbedaan biaya asurans
 
 
 <p align="center">
-  <img src="https://github.com/wildannrr/health-insurance_predictive-analytics/blob/main/assets/corr_heatmap.png" alt="Gambar 4. Heatmap Korelasi Antar Fitur" width="500"/>
+  <img src="https://github.com/wildannrr/health-insurance_predictive-analytics/blob/main/assets/corr_heatmap.png" alt="Gambar 5. Heatmap Korelasi Antar Fitur" width="500"/>
 </p>
 
-<p align="center"><strong>Gambar 4.</strong> Heatmap Korelasi Antar Fitur</p>
+<p align="center"><strong>Gambar 5.</strong> Heatmap Korelasi Antar Fitur</p>
 
 Variabel age, bmi, dan children memiliki korelasi positif terhadap charges, tapi age dan bmi lebih dominan. Ini artinya, makin tua dan makin tinggi BMI seseorang, makin mahal potensi biaya asuransinya.
 
