@@ -4,12 +4,12 @@
 Domain yang dipilih untuk proyek _machine learning_ ini adalah **Ekonomi dan Bisnis**, dengan judul **Predictive Analytics: Prediksi Biaya Asuransi Kesehatan**.
 
 ### Latar Belakang
+<img src="https://github.com/user-attachments/assets/93548ca5-34e4-4726-992b-97276e06e509" alt="Contoh Gambar" style="width:100%; height:auto;">
 
-
-Kesehatan merupakan salah satu aspek paling krusial dalam kehidupan manusia modern. Dengan meningkatnya biaya perawatan medis dari tahun ke tahun, banyak individu dan keluarga berupaya melindungi diri mereka melalui asuransi kesehatan. Salah satu tantangan utama bagi perusahaan asuransi adalah bagaimana menentukan premi atau biaya asuransi yang adil dan akurat bagi tiap individu berdasarkan karakteristik pribadinya seperti usia, status merokok, indeks massa tubuh (BMI), dan lainnya.
+Kesehatan merupakan salah satu aspek paling krusial dalam kehidupan manusia modern. Dengan meningkatnya biaya perawatan medis dari tahun ke tahun, banyak individu dan keluarga berupaya melindungi diri mereka melalui asuransi kesehatan. Salah satu tantangan utama bagi perusahaan asuransi adalah bagaimana menentukan premi atau biaya asuransi yang adil dan akurat bagi tiap individu berdasarkan karakteristik pribadinya seperti usia, status merokok, indeks massa tubuh (BMI), dan lainnya[[1](https://www.researchgate.net/publication/383522368_Health_Insurance_Factor_Analysis)].
 
 Prediksi biaya asuransi berbasis data dapat membantu perusahaan asuransi menyusun penawaran premi yang lebih tepat dan transparan, serta membantu calon nasabah memahami faktor apa saja yang memengaruhi besaran premi yang dibebankan. Analisis prediktif menggunakan teknik machine learning telah terbukti efektif dalam mengidentifikasi pola dan hubungan non-linear antar variabel dalam sistem kompleks seperti asuransi kesehatan.
-Studi oleh Billa dan Nagpal (2024) menunjukkan bahwa penerapan teknik machine learning, termasuk regresi linier dan random forest, dapat secara efektif memprediksi premi asuransi kesehatan berdasarkan data demografis dan gaya hidup individu. Model-model ini tidak hanya meningkatkan akurasi prediksi tetapi juga membantu dalam pengambilan keputusan yang lebih baik oleh pemangku kepentingan di sektor kesehatan dan asuransi[[1](https://journal.esrgroups.org/jes/article/download/3962/3065/7574)].
+Studi oleh Billa dan Nagpal (2024) menunjukkan bahwa penerapan teknik machine learning, termasuk regresi linier dan random forest, dapat secara efektif memprediksi premi asuransi kesehatan berdasarkan data demografis dan gaya hidup individu. Model-model ini tidak hanya meningkatkan akurasi prediksi tetapi juga membantu dalam pengambilan keputusan yang lebih baik oleh pemangku kepentingan di sektor kesehatan dan asuransi[[2](https://journal.esrgroups.org/jes/article/download/3962/3065/7574)].
 
 
 ## Business Understanding
@@ -40,8 +40,8 @@ Untuk mencapai tujuan proyek ini, langkah-langkah yang dilakukan meliputi:
   Membangun dan membandingkan beberapa algoritma machine learning untuk menentukan model terbaik dalam melakukan prediksi. Model yang digunakan antara lain:
   
   
-  - **Random Forest**: Random Forest adalah algoritma ensemble yang terdiri dari banyak pohon keputusan (_decision trees_) yang dibangun dari subset acak data dan fitur. Setiap pohon membuat prediksi secara mandiri, kemudian hasil akhirnya ditentukan melalui voting mayoritas. Pendekatan ini meningkatkan akurasi dan kestabilan model serta mampu mengurangi risiko overfitting yang kerap terjadi pada model _decision tree_ tunggal [[2](https://jidt.org/jidt/article/view/393/205)].
-  - **Linear Regression**: Linear Regression adalah teknik analisis data yang memprediksi nilai data yang tidak diketahui dengan menggunakan nilai data lain yang terkait dan diketahui. Secara matematis memodelkan variabel yang tidak diketahui atau tergantung dan variabel yang dikenal atau independen sebagai persamaan linier. [[3](https://aws.amazon.com/id/what-is/linear-regression/)].
+  - **Random Forest**: Random Forest adalah algoritma ensemble yang terdiri dari banyak pohon keputusan (_decision trees_) yang dibangun dari subset acak data dan fitur. Setiap pohon membuat prediksi secara mandiri, kemudian hasil akhirnya ditentukan melalui voting mayoritas. Pendekatan ini meningkatkan akurasi dan kestabilan model serta mampu mengurangi risiko overfitting yang kerap terjadi pada model _decision tree_ tunggal [[3](https://jidt.org/jidt/article/view/393/205)].
+  - **Linear Regression**: Linear Regression adalah teknik analisis data yang memprediksi nilai data yang tidak diketahui dengan menggunakan nilai data lain yang terkait dan diketahui. Secara matematis memodelkan variabel yang tidak diketahui atau tergantung dan variabel yang dikenal atau independen sebagai persamaan linier. [[4](https://aws.amazon.com/id/what-is/linear-regression/)].
 ## Data Understanding
 ### Gathering Data
 Dataset yang digunakan dalam proyek ini adalah "Medical Cost Personal Datasets", yang berisi informasi mengenai karakteristik pasien dan biaya yang dikeluarkan untuk pengobatan
@@ -57,7 +57,7 @@ Informasi Datasets
 
 | Jenis       | Keterangan                                                                                                                                      |
 |-------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Title**   | 🩺📊 Medical Cost Personal Datasets 🌟🔬                                                                                                               |
+| **Title**   | 👨‍⚕️💉 Medical Cost Personal Datasets 💵💰                                                                                                               |
 | **Source**  | [Kaggle](https://www.kaggle.com/datasets/mirichoi0218/insurance)                                                              |
 | **Maintainer** | [Miri Choi](https://www.kaggle.com/mirichoi0218)                                                                                     |
 | **License** | [Database Content License](https://opendatacommons.org/licenses/dbcl/1-0/)                                                                                                                   |
