@@ -109,145 +109,205 @@ Tahap *Exploratory Data Analysis (EDA)* dilakukan untuk memahami karakteristik d
 ---
 1. Univariate Analysis  
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/4383e96a-86e6-4101-9f3d-0f72583c02aa" alt="Gambar 1. Pie-Chart Cancer & Non-Cancer" width="500"/>
+  <img src="https://github.com/wildannrr/health-insurance_predictive-analytics/blob/main/assets/perokok%20vs%20non_countp.png" alt="Gambar 1. Perokok vs Non-Perokok" width="500"/>
 </p>
 
-<p align="center"><strong>Gambar 1.</strong> Pie-Chart Kanker & Kanker</p>
+<p align="center"><strong>Gambar 1.</strong> Perokok vs Non-perokok</p>
 
-Pie chart di atas menunjukkan proporsi pasien yang terdiagnosis kanker (`1`) dan non-kanker (`0`). Sebanyak <strong>557 pasien (37.1%)</strong> terdiagnosis kanker (warna pink), sedangkan <strong>943 pasien (62.9%)</strong> tidak terdiagnosis kanker (warna biru).  Informasi ini penting untuk mengetahui apakah kelas target seimbang atau tidak, karena ketidakseimbangan dapat menyebabkan bias dalam model klasifikasi.
+CountPlot di atas menunjukkan proporsi pasien yang memiliki kebiasaan merokok (`yes`) dan non-perokok (`no`). Sebanyak <strong> 274 pasien (20.5%)</strong> memiliki kebiasaan merokok, sedangkan <strong>1064 pasien (79.5)</strong> tidak 
+memiliki kebiasaan merokok.
+
+| Status Perokok | Jumlah Data |
+| -------------- | ----------- |
+| no             | 1064        |
+| yes            | 274         |
+| **Total**      | **1338**    |
 
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/5cd2cb5e-f1c3-4049-81e8-afe16b3d869a" alt="Gambar 2. Histogram Fitur Numerik" width="500"/>
+  <img src="https://github.com/wildannrr/health-insurance_predictive-analytics/blob/main/assets/univariate_hist.png" alt="Gambar 2. Histogram Fitur Numerik" width="500"/>
 </p>
 
 <p align="center"><strong>Gambar 2.</strong> Histogram Fitur Numerik</p>
 
-Histogram digunakan untuk melihat distribusi dari seluruh fitur numerik. Sebagian besar fitur menunjukkan distribusi yang tidak simetris, dengan beberapa fitur memiliki penyebaran yang sempit dan lainnya menunjukkan kemungkinan adanya outlier. Analisis ini membantu menentukan perlunya transformasi data atau penanganan nilai ekstrim.
+Age : 
+- Distribusi usia menunjukkan puncak yang signifikan di kisaran 18-20 tahun, diikuti oleh penurunan bertahap hingga usia 60-an. Ini menunjukkan bahwa dataset memiliki lebih banyak individu muda (18-30 tahun) dibandingkan kelompok usia yang lebih tua, dengan distribusi yang agak miring ke kiri.
+
+BMI :
+- Distribusi BMI mendekati normal, dengan puncak utama di kisaran 30-35. Ada ekor panjang ke arah nilai BMI yang lebih tinggi (>45), yang mengindikasikan adanya beberapa outlier atau individu dengan BMI ekstrem.
+
+Children :
+- Distribusi sangat miring ke kiri, dengan mayoritas individu (sekitar 500-600 orang) tidak memiliki anak (0). Jumlah individu dengan 1, 2, atau 3 anak menurun secara bertahap, dan sangat sedikit yang memiliki 4 atau 5 anak, menunjukkan bahwa fitur ini memiliki variasi terbatas.
+
+<p align="center">
+  <img src="https://github.com/wildannrr/health-insurance_predictive-analytics/blob/main/assets/target_hist.png" alt="Gambar 3. Analisis Distribusi Fitur Charges" width="500"/>
+</p>
+
+<p align="center"><strong>Gambar 3.</strong> Analisis Distribusi Fitur Charges</p>
+
+
+Distribusi sangat miring ke kanan (right-skewed), dengan puncak utama di kisaran 0-10,000. Sebagian besar biaya asuransi berada di bawah $20,000, tetapi ada ekor panjang hingga $60,000, menunjukkan adanya nilai ekstrem (misalnya, biaya tinggi untuk perokok atau individu dengan kondisi kesehatan serius).  
 
 ---
 2. Multivariate Analysis
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/0710c837-434c-44a0-af84-598276949b4a" alt="Gambar 3. Pairplot Diagnosis terhadap Fitur" width="500"/>
+  <img src="https://github.com/wildannrr/health-insurance_predictive-analytics/blob/main/assets/catt-charges_boxp.png" alt="Gambar 3. Box Plot" width="500"/>
 </p>
 
-<p align="center"><strong>Gambar 3.</strong> Pairplot Diagnosis terhadap Fitur</p>
+<p align="center"><strong>Gambar 3.</strong> Boxplot Analisis kategorikal terhadap fitur charges</p>
 
-Pairplot memberikan gambaran hubungan antar fitur berdasarkan label diagnosis. Warna berbeda menunjukkan kategori kanker dan non-kanker. Beberapa fitur menunjukkan pemisahan yang cukup jelas antar kelas, yang menjadi indikasi baik bahwa fitur-fitur ini berpotensi kuat untuk pemodelan prediktif.
+#### **Charges vs Smoker** :
+- Perokok (yes) memiliki biaya asuransi yang jauh lebih tinggi dibandingkan non-perokok.
+
+- Median charges untuk perokok berada di sekitar 35.000, sementara non-perokok hanya sekitar 8.000.
+
+- Distribusi biaya untuk perokok juga lebih menyebar (varians besar), dengan nilai maksimum menyentuh lebih dari 60.000.
+
+**_Insights_** :
+
+Merokok adalah faktor risiko utama yang menyebabkan peningkatan drastis pada biaya asuransi kesehatan. Hal ini menunjukkan bahwa status merokok merupakan predictor yang sangat kuat dan penting untuk model prediksi.
+
+#### **Charges vs Sex** :
+- Median biaya antara pria dan wanita hampir sama (sekitar 10.000–12.000).
+- Terdapat outlier pada kedua kelompok, tetapi distribusi nilai charges relatif seimbang.
+
+**_Insights_** : 
+
+Jenis kelamin tidak terlalu berpengaruh signifikan terhadap biaya asuransi. Artinya, variabel sex mungkin memiliki kontribusi rendah dalam model prediksi.
+
+#### **Charges vs Region** :
+- Median biaya asuransi hampir sama di semua wilayah, meskipun southeast sedikit lebih tinggi.
+- Semua wilayah memiliki banyak outlier, tapi tidak ada pola perbedaan yang sangat jelas antar region. 
+
+**_Insights_** : 
+
+Wilayah geografis hanya memiliki pengaruh kecil terhadap perbedaan biaya asuransi. Namun, wilayah southeast menunjukkan sedikit kecenderungan untuk memiliki biaya lebih tinggi, mungkin karena faktor demografis atau pola hidup.
 
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/6dfe8b5c-192b-47e0-9550-6ec230cc42eb" alt="Gambar 4. Heatmap Korelasi Antar Fitur" width="500"/>
+  <img src="https://github.com/wildannrr/health-insurance_predictive-analytics/blob/main/assets/corr_heatmap.png" alt="Gambar 4. Heatmap Korelasi Antar Fitur" width="500"/>
 </p>
 
 <p align="center"><strong>Gambar 4.</strong> Heatmap Korelasi Antar Fitur</p>
 
-Warna merah menunjukkan korelasi positif tinggi, sedangkan biru menunjukkan korelasi negatif. Terlihat bahwa fitur-fitur seperti `radius_mean`, `perimeter_mean`, dan `area_mean` sangat berkorelasi satu sama lain. Informasi ini berguna dalam pemilihan fitur atau teknik reduksi dimensi.
+Variabel age, bmi, dan children memiliki korelasi positif terhadap charges, tapi age dan bmi lebih dominan. Ini artinya, makin tua dan makin tinggi BMI seseorang, makin mahal potensi biaya asuransinya.
 
 ## Data Preparation
-Pada tahap ini, dilakukan beberapa teknik persiapan data agar model machine learning dapat dilatih dengan optimal. Teknik yang digunakan mencakup **Data Splitting** dan **Standardization**, yang dijelaskan secara berurutan sesuai implementasi dalam notebook.
-
-1. Outlier Detection and Handling
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/39281b8e-2fa5-44df-858d-814c56551339" alt="Gambar 5. Boxplot Sebelum Penanganan Outlier" width="500"/>
-</p>
-
-<p align="center"><strong>Gambar 5.</strong> Boxplot Sebelum Penanganan Outlier</p>
-
-Boxplot menunjukkan nilai ekstrim (outlier) pada sebagian besar fitur. Outlier dapat mempengaruhi performa model dan perlu ditangani secara hati-hati.
-
-Setelah proses deteksi dan pembersihan menggunakan metode Interquartile Range (IQR), data menjadi lebih bersih:
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/65f9ea0c-ebcf-41f7-afd0-5c406a09e5b3" alt="Gambar 6. Boxplot Setelah Penangan Outliers" width="500"/>
-</p>
-
-<p align="center"><strong>Gambar 6.</strong> Boxplot Setelah Penanganan Outlier</p>
-
-Fitur-fitur setelah penanganan menunjukkan distribusi yang lebih stabil tanpa banyak nilai pencilan ekstrem.
-
----
-2. Class Imbalance & SMOTE
-
-Distribusi awal kelas target:
-- `Kelas 0` (non-kanker): 907 data
-- `Kelas 1` (kanker): 377 data
-Distribusi ini menunjukkan ketimpangan kelas (class imbalance) yang signifikan. Jika tidak ditangani, model akan cenderung bias terhadap kelas mayoritas.
-
-**Output Distribusi Kelas Setelah SMOTE**
-
-Teknik SMOTE (Synthetic Minority Oversampling Technique) digunakan untuk menyeimbangkan kelas dengan menambahkan data sintetis pada kelas minoritas (kanker).
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/8ce69ebf-c968-4f30-98e4-653ba124b23c" alt="Gambar 7. Visualisasi Sebelum dan Sesudah SMOTE" width="500"/>
-</p>
-
-<p align="center"><strong>Gambar 7.</strong> Visualisasi Sebelum dan Sesudah SMOTE</p>
-
-Gambar ini membandingkan jumlah data antar kelas:
-- Sebelum SMOTE: kelas kanker (merah) jauh lebih sedikit dibanding non-kanker (hijau),
-- Setelah SMOTE: distribusi menjadi seimbang (907 data per kelas), sehingga model dapat dilatih dengan adil dan tidak bias.
+Pada proses Data Preparation dilakukan beberapa teknik persiapan data agar model machine learning dapat dilatih dengan optimal. Teknik yang digunakan mencakup Data Encoding Splitting dan Standardization, yang dijelaskan secara berurutan sesuai implementasi dalam notebook. Untuk proses Data Assessing, berikut adalah beberapa pengecekan yang dilakukan:
+  - Duplicate data (data yang serupa dengan data lainnya) = Terdapat kolom yang memiliki duplikasi data.
+  - Missing value (data atau informasi yang "hilang" atau tidak tersedia) = Tidak ada Missing Value
+  - Outlier (data yang menyimpang dari rata-rata sekumpulan data yang ada) = Dipertahankan karena biaya asuransi mahal bisa wajar, terutama pada perokok dan usia lanjut
 
 
-### Data Splitting
-Tahap ini bertujuan untuk membagi data menjadi **data pelatihan (training set)** dan **data pengujian (testing set)**. Pemisahan ini penting agar model dapat diuji pada data yang belum pernah dilihat sebelumnya, guna mengevaluasi kemampuan generalisasinya.
-- Teknik: `train_test_split` dari `sklearn.model_selection`
-- Proporsi: 70% data untuk pelatihan, 30% untuk pengujian
-- Alasan:
-  - Menghindari overfitting karena model hanya dilatih pada subset data (training set).
-  - Memungkinkan evaluasi performa model yang lebih objektif menggunakan testing set.
+
+1. Cek data duplikat
+### 🔍 Cek dan Hapus Data Duplikat
+
+```python
+# Cek jumlah duplikat
+duplicate_rows = df[df.duplicated()]
+print(f"Jumlah duplikat: {duplicate_rows.shape[0]}")
+
+# Tampilkan baris duplikat
+print(duplicate_rows)
+
+# Hapus duplikat
+df = df.drop_duplicates()
+
+# Verifikasi kembali
+print(f"Jumlah data setelah menghapus duplikat: {df.shape[0]}")
+```
+Output : 
+
+![image](https://github.com/user-attachments/assets/48aa9215-bd91-49fb-9940-8ae5bf72456b)
+
+2. Cek Missing Value
+
+![image](https://github.com/user-attachments/assets/53a81080-f8ed-41a4-bcf0-50b4f3849d5f)
+
+Tidak terdapat missing value (NaN/NULL) pada dataset ini.
+
+### Encoding Data Kategorikal
+
+```python
+# Encoding fitur kategorikal
+encoded_df = pd.get_dummies(df, columns=['sex', 'smoker', 'region'], drop_first=True)
+
+# Menampilkan beberapa kolom awal
+print(encoded_df.head())
+```
+Penjelasan :
+- drop_first=True menghindari dummy variable trap.
+- Kolom sex akan jadi sex_male (0: female, 1: male)
+- Kolom smoker akan jadi smoker_yes (0: false, 1: true)
+- Kolom region akan jadi region_northwest, region_southeast, region_southwest (tanpa northeast karena di-drop)
 
 ### Standardization
-Standarisasi dilakukan untuk memastikan bahwa seluruh fitur numerik berada dalam skala yang sama. Ini sangat penting terutama untuk algoritma yang sensitif terhadap skala data seperti _K-Nearest Neighbors_, SVM, Logistic Regression, dan lain-lain.
+Standarisasi dilakukan untuk memastikan bahwa seluruh fitur numerik berada dalam skala yang sama (age, bmi, children).
+```python
+# Fitur numerik
+num_features = ['age', 'bmi', 'children']
+
+# Inisialisasi scaler
+scaler = StandardScaler()
+
+# Simpan hasil scaling di DataFrame baru
+encoded_df[num_features] = scaler.fit_transform(encoded_df[num_features])
+```
+
 - Teknik: `StandardScaler` dari `sklearn.preprocessing`
 - Apa yang dilakukan: Mengubah fitur agar memiliki distribusi dengan **mean = 0** dan **standar deviasi = 1**.
 - Alasan:
   - Mempercepat proses konvergensi pada algoritma pembelajaran.
   - Menghindari dominasi fitur dengan nilai besar terhadap model.
 
-## Modeling
-Pada tahap ini, dilakukan proses pengembangan model machine learning untuk menyelesaikan permasalahan klasifikasi diagnosis. Beberapa algoritma diuji dan dibandingkan, dimulai dari Extra Trees Classifier, Random Forest, KNN (K-Nearest Neighbor), Support Vector Classifier, dan Naive Bayes. Pemodelan dilakukan secara bertahap, dimulai dari baseline model (tanpa tuning) hingga proses hyperparameter tuning untuk meningkatkan performa model.
 
-### Extra Trees Classifier
-**Extra Trees Classifier** (Extremely Randomized Trees) merupakan algoritma *ensemble learning* berbasis pohon keputusan yang bekerja dengan membangun banyak *decision tree* dan menggabungkan hasilnya untuk menghasilkan prediksi yang lebih akurat. Algoritma ini sangat mirip dengan **Random Forest**, namun memiliki tingkat randomisasi yang lebih tinggi dalam proses pemisahan node [[9](https://dspace.uii.ac.id/bitstream/handle/123456789/48182/19522292.pdf?sequence=1&isAllowed=y)]. Perbedaannya terletak pada cara pemilihan *split point*, jika Random Forest mencari pemisahan terbaik berdasarkan kriteria tertentu, Extra Trees memilih titik pemisahan secara acak untuk setiap fitur, lalu memilih yang terbaik dari pilihan acak tersebut. Pendekatan ini membuat proses pelatihan menjadi lebih cepat dan mampu mengurangi *variance*, serta efektif dalam menangani fitur dengan skala berbeda tanpa memerlukan normalisasi data [[10](https://dspace.uii.ac.id/bitstream/handle/123456789/54959/20523191.pdf?sequence=1&isAllowed=y)].
+### Data Splitting
+Tahap ini bertujuan untuk membagi data menjadi **data pelatihan (training set)** dan **data pengujian (testing set)**. Pemisahan ini penting agar model dapat diuji pada data yang belum pernah dilihat sebelumnya, guna mengevaluasi kemampuan generalisasinya.
+```python
+# Split Dataset
+
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+```
+
+- Teknik: `train_test_split` dari `sklearn.model_selection`
+- Proporsi: 80% data untuk pelatihan, 20% untuk pengujian
+- Alasan:
+  - Menghindari overfitting karena model hanya dilatih pada subset data (training set).
+  - Memungkinkan evaluasi performa model yang lebih objektif menggunakan testing set.
+
+
+
+## Modeling
+Bagian ini bertujuan untuk membangun model machine learning menggunakan algoritma yang sesuai dan meningkatkan kinerjanya melalui proses tuning. Model dikembangkan, dievaluasi, dan disempurnakan dengan memilih kombinasi parameter terbaik menggunakan teknik seperti Grid Search.
+
+### Linear Regression
+Linear Regression adalah algoritma yang menyediakan hubungan linier antara variabel independen dan variabel dependen untuk memprediksi hasil kejadian di masa mendatang. Ini adalah metode statistik yang digunakan dalam ilmu data dan pembelajaran mesin untuk analisis prediktif.
+Variabel bebas juga merupakan variabel prediktor atau penjelas yang tetap tidak berubah karena perubahan variabel lain. Namun, variabel dependen berubah seiring dengan fluktuasi variabel bebas. Model regresi memprediksi nilai variabel dependen, yang merupakan variabel respons atau hasil yang dianalisis atau dipelajari.[[4](https://www.spiceworks.com/tech/artificial-intelligence/articles/what-is-linear-regression/)]
 
 **Tahapan Pemodelan**
-1. Baseline Model
-
-   Model awal dibuat menggunakan parameter default dengan sedikit penyesuaian:
-   - `n_estimators = 50`: Jumlah pohon yang digunakan dalam ensemble.
-   - `max_depth = 5`: Kedalaman maksimum dari setiap pohon.
-   - `max_features = 'sqrt'`: Jumlah fitur yang dipertimbangkan saat membagi setiap node.
-
-   Hasil evaluasi model:
-   - Akurasi Training: 80.93%
-   - Akurasi Testing: 78.90%
-   Model ini kemudian disimpan sebagai baseline untuk dibandingkan setelah proses tuning
-
-2. Hyperparameter Tuning
-
-   Untuk meningkatkan performa model, dilakukan pencarian parameter terbaik menggunakan **GridSearchCV** dengan validasi silang 5-fold. Hasil evaluasi model setelah tuning:
-   - Akurasi Training: 90.23%
-   - Akurasi Testing: 80.00%
-
-3. Perbandingan Kinerja
-   | Model                  | Akurasi Training | Akurasi Testing |
-   | ---------------------- | ---------------- | --------------- |
-   | Extra Trees (Baseline) | 80.93%           | 78.90%          |
-   | Extra Trees (Tuned)    | 90.23%           | 80.00%          |
+  - `lr_model = LinearRegression()`: Inisialisasi model
+  - `lr_model.fit(X_train, y_train)`: Melatih model dengan data pelatihan (X_train, y_train) agar model belajar hubungan antara fitur dan target 
+  - `y_pred = lr_model.predict(X_test)`: Prediksi model
     
-   Meskipun akurasi training meningkat secara signifikan setelah tuning (dari 80.93% menjadi 90.23%), akurasi pada data testing hanya meningkat sedikit, dari 78.90% menjadi 80.00%. Hal ini menunjukkan bahwa model hasil tuning cenderung lebih cocok terhadap data pelatihan (potensi overfitting), tetapi tidak memberikan peningkatan besar dalam kemampuan generalisasi terhadap data baru.
+```
+mae = mean_absolute_error(y_test, y_pred)
+mse = mean_squared_error(y_test, y_pred)
+rmse = np.sqrt(mse)
+r2 = r2_score(y_test, y_pred)
+```
 
-4. Analisis Kelebihan & Kekurangan
-   | Aspek          | Penjelasan                                                                                                                                                |
-   | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Kelebihan**  | - Cepat dilatih pada dataset besar.<br>- Tahan terhadap overfitting dibanding pohon tunggal.<br>- Tidak sensitif terhadap outlier dan fitur tidak relevan. |
-   | **Kekurangan** | - Interpretabilitas rendah.<br>- Performa bisa kurang stabil jika jumlah pohon terlalu kecil.<br>- Bisa overfitting jika tidak diatur kedalaman pohonnya.  |
+- MAE (Mean Absolute Error): Rata-rata selisih absolut antara nilai aktual dan prediksi.
+- RMSE (Root Mean Squared Error): Akar dari rata-rata kuadrat selisih prediksi.
+- R² (R-squared): Mengukur seberapa baik model menjelaskan variasi data. Semakin mendekati 1, semakin baik model.
 
-5. Kesimpulan Sementara
-   
-   Model Extra Trees menunjukkan performa yang cukup baik dengan akurasi testing mendekati 80%. Meskipun tuning memberikan peningkatan besar pada akurasi training, dampaknya terhadap data testing tidak signifikan. Oleh karena itu, penting untuk melakukan perbandingan dengan model lain seperti Random Forest atau SVC sebelum memutuskan model terbaik untuk digunakan secara final.
+Performance : 
+- MAE  : 4177.05
+- RMSE : 5956.34
+- R²   : 0.8069
 
+Model ini menunjukkan hasil yang cukup baik di hubungan antar fitur bersifat linier. Namun, performanya bisa menurun bila ada non-linearitas atau interaksi kompleks antar fitur (pengaruh besar dari perokok terhadap biaya asuransi).
 
 ### Random Forest
 **Random Forest** adalah algoritma ensemble machine learning berbasis pohon keputusan yang digunakan untuk tugas klasifikasi maupun regresi. Algoritma ini bekerja dengan membangun sejumlah pohon keputusan (decision trees) selama proses pelatihan, lalu menggabungkan hasil prediksi dari setiap pohon. Dalam kasus klasifikasi, prediksi akhir ditentukan berdasarkan voting mayoritas dari seluruh pohon. Pendekatan ini secara efektif mengurangi risiko overfitting yang sering terjadi pada model pohon tunggal serta meningkatkan kemampuan generalisasi model. Dengan menyatukan banyak pohon yang relatif tidak berkorelasi, Random Forest mampu menghasilkan prediksi yang lebih stabil dan akurat [[11](https://hostjournals.com/jimat/article/view/473/289)].
@@ -256,215 +316,153 @@ Pada tahap ini, dilakukan proses pengembangan model machine learning untuk menye
 1. Baseline Model
    
    Model awal dibuat menggunakan parameter default dengan sedikit penyesuaian:
-   - `n_estimators = 50`: Jumlah pohon dalam hutan.
-   - `max_depth = 5`: Kedalaman maksimum pohon.
-   - `max_features = 'sqrt'`: Fitur yang dipilih secara acak untuk split pada setiap node.
+   - `n_estimators = 100`: Jumlah pohon.
+   - `random_state = 42`: Untuk reproducibilitty.
+   - `n_jobs = -1`: Menggunakan semua core CPU
 
-   Hasil evaluasi model:
-   - Akurasi Training: 86.76%
-   - Akurasi Testing: 81.10%
-   Model ini kemudian disimpan sebagai baseline untuk dibandingkan setelah proses tuning
-
+  Latih model dengan data training dan prediksi menggunakan data test
+  ```
+  rf_model.fit(X_train, y_train)
+  y_pred_rf = rf_model.predict(X_test)
+  ```
 2. Hyperparameter Tuning
 
-   Untuk meningkatkan performa model, dilakukan pencarian parameter terbaik menggunakan **GridSearchCV** dengan validasi silang 5-fold. Hasil evaluasi model setelah tuning:
-   - Akurasi Training: 93.46%
-   - Akurasi Testing: 84.22%
+  ### 🔧 Hyperparameter Tuning dengan GridSearchCV
 
-3. Perbandingan Kinerja
-   | Model                    | Akurasi Training | Akurasi Testing |
-   | ------------------------ | ---------------- | --------------- |
-   | Random Forest (Baseline) | 86.76%           | 81.10%          |
-   | Random Forest (Tuned)    | 93.46%           | 84.22%          |
+```python
+# 5. Hyperparameter Tuning
+print("\n=== Hyperparameter Tuning ===")
+param_grid = {
+    'n_estimators': [50, 100, 200],
+    'max_depth': [10, 20, None],
+    'min_samples_split': [2, 5, 10],
+    'min_samples_leaf': [1, 2, 4]
+}
 
-   Setelah dilakukan tuning, akurasi training Random Forest meningkat cukup signifikan dari 86.76% menjadi 93.46%. Akurasi testing juga meningkat dari 81.10% menjadi 84.22%, menandakan bahwa tuning berhasil meningkatkan kemampuan generalisasi model terhadap data baru.
+# Grid Search dengan Cross Validation
+rf_grid = GridSearchCV(
+    RandomForestRegressor(random_state=42, n_jobs=-1),
+    param_grid,
+    cv=5,
+    scoring='r2',
+    n_jobs=-1,
+    verbose=1
+)
 
+# Melatih model dengan data training
+rf_grid.fit(X_train, y_train)
 
-4. Analisis Kelebihan & Kekurangan
-   | Aspek          | Penjelasan                                                                                                                                                                                    |
-   | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Kelebihan**  | - Mengurangi overfitting dibandingkan decision tree tunggal. <br> - Dapat menangani data dengan fitur yang banyak. <br> - Cukup stabil terhadap noise.                                        |
-   | **Kekurangan** | - Proses pelatihan dan prediksi relatif lambat untuk dataset besar. <br> - Interpretasi hasil model lebih sulit. <br> - Rentan terhadap overfitting jika parameter tidak diatur dengan tepat. |
-
-5. Kesimpulan Sementara
-   
-   Model Random Forest menunjukkan performa yang sangat baik dengan akurasi testing mencapai 84.22% setelah dilakukan tuning. Peningkatan akurasi training yang signifikan dari 86.76% menjadi 93.46% menunjukkan model lebih fit terhadap data pelatihan. Namun, peningkatan akurasi testing juga cukup berarti, sehingga tuning berhasil memperbaiki kemampuan generalisasi model. Oleh karena itu, Random Forest menjadi kandidat kuat sebagai model terbaik dibandingkan dengan algoritma lain yang diuji.
-
-
-### KNN (K-Nearest Neighbor)
-**K-Nearest Neighbor (KNN)** adalah algoritma klasifikasi non-parametrik yang bekerja dengan menentukan kelas dari data baru berdasarkan mayoritas label dari K tetangga terdekatnya. Termasuk *lazy learner*, KNN tidak membentuk model selama pelatihan, melainkan menggunakan seluruh data untuk prediksi. Meski sederhana, KNN cukup efektif dan dapat mengungguli model kompleks dalam beberapa kasus, terutama pada dataset kecil. Namun, performanya bisa menurun jika terdapat fitur tidak relevan atau pada data berdimensi tinggi [[12](https://dspace.uii.ac.id/bitstream/handle/123456789/29782/15611077%20Meila%20Ika%20Pradipta.pdf?sequence=1&isAllowed=y)].
-
-**Tahapan Pemodelan**
-1. Baseline Model
-   
-   Model awal dibuat menggunakan parameter default dengan sedikit penyesuaian:
-   - `n_neighbors = 5`: Jumlah tetangga terdekat yang digunakan untuk voting kelas.
-
-   Hasil evaluasi model:
-   - Akurasi Training: 84.24%
-   - Akurasi Testing: 70.64%
-   Model ini kemudian disimpan sebagai baseline untuk dibandingkan setelah proses tuning
-
-2. Hyperparameter Tuning
-
-   Untuk meningkatkan performa model, dilakukan pencarian parameter terbaik menggunakan **GridSearchCV** dengan validasi silang 5-fold. Hasil evaluasi model setelah tuning:
-   - Akurasi Training: 100.00%
-   - Akurasi Testing: 78.72%
-     
-3. Perbandingan Kinerja
-   | Model          | Akurasi Training | Akurasi Testing |
-   | -------------- | ---------------- | --------------- |
-   | KNN (Baseline) | 84.24%           | 70.64%          |
-   | KNN (Tuned)    | 100.00%          | 78.72%          |
-
-   Meskipun akurasi training setelah tuning mencapai 100%, akurasi testing meningkat dari 70.64% menjadi 78.72%. Hal ini menunjukkan bahwa tuning membuat model sangat fit terhadap data pelatihan (kemungkinan overfitting), namun ada peningkatan kemampuan generalisasi yang cukup signifikan pada data testing.
-
-4. Analisis Kelebihan & Kekurangan
-   | Aspek          | Penjelasan                                                                                                                                                                          |
-   | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Kelebihan**  | - Implementasi sederhana. <br> - Tidak memerlukan pelatihan eksplisit. <br> - Cocok untuk data dengan distribusi kompleks.                                                          |
-   | **Kekurangan** | - Sensitif terhadap skala data. <br> - Waktu prediksi lambat untuk dataset besar. <br> - Rentan terhadap overfitting, terutama jika `weights='distance'` dan data memiliki outlier. |
-
-5. Kesimpulan Sementara
-   
-   Model KNN menunjukkan peningkatan akurasi testing yang cukup besar setelah tuning, walaupun model tampak mengalami overfitting dengan akurasi training sempurna. Perbaikan ini menandakan bahwa tuning parameter berhasil meningkatkan performa model pada data testing, namun perlu hati-hati terhadap potensi overfitting yang terjadi. Evaluasi lebih lanjut diperlukan untuk memastikan kestabilan model pada data baru.
+# Menyimpan model terbaik dari hasil tuning
+best_rf_model = rf_grid.best_estimator_ 
+print(f"Best parameters: {rf_grid.best_params_}")
+print(f"Best CV R² score: {rf_grid.best_score_:.4f}")
+```
+Output: 
+![image](https://github.com/user-attachments/assets/1b1d637c-9725-49d7-a2b0-d0153f64370a)
 
 
-### Support Vector Classifier
-**Support Vector Classifier (SVC)** merupakan algoritma klasifikasi yang termasuk dalam keluarga Support Vector Machine (SVM). Algoritma ini bekerja dengan mencari hyperplane terbaik yang dapat memisahkan kelas-kelas dalam ruang berdimensi tinggi. SVC efektif digunakan untuk masalah klasifikasi linier maupun non-linier, dan dikenal mampu menghasilkan margin klasifikasi maksimum. Dengan kernel trick, SVC dapat menangani data non-linier dengan memetakan data ke ruang fitur berdimensi lebih tinggi [[13](https://scikit-learn.org/stable/modules/svm.html)].
+Penjelasan :
 
-**Tahapan Pemodelan**
-1. Baseline Model
-   
-   Model awal dibuat menggunakan parameter default dengan sedikit penyesuaian:
-   - `kernel='rbf'`: Menggunakan Radial Basis Function sebagai fungsi kernel.
-   - `C=1.0`: Parameter regulasi default.
-   - `random_state=42`: Untuk memastikan reprodusibilitas hasil.
+- param_grid: kombinasi hyperparameter yang akan diuji.
+- n_estimators: jumlah pohon dalam Random Forest.
+- max_depth: kedalaman maksimum pohon. None artinya tak terbatas.
+- min_samples_split: minimal jumlah sampel untuk membagi node.
+- min_samples_leaf: minimal jumlah sampel di leaf node.
 
-   Hasil evaluasi model:
-   - Akurasi Training: 68.24%
-   - Akurasi Testing: 68.26%
-   Model ini kemudian disimpan sebagai baseline untuk dibandingkan setelah proses tuning
-
-2. Hyperparameter Tuning
-
-   Untuk meningkatkan performa model, dilakukan pencarian parameter terbaik menggunakan **GridSearchCV** dengan validasi silang 5-fold. Hasil evaluasi model setelah tuning:
-   - Akurasi Training: 100.00%
-   - Akurasi Testing: 81.10%
-
-3. Perbandingan Kinerja
-   | Model          | Akurasi Training  | Akurasi Testing |
-   | -------------- | ----------------- | --------------- |
-   | SVC (Baseline) | 68.24%            | 68.26%          |
-   | SVC (Tuned)    | 100.00%           | 81.10%          |
-
-   Setelah tuning, akurasi training naik drastis hingga 100%, menandakan model sangat fit terhadap data pelatihan (overfitting). Namun, akurasi testing juga meningkat signifikan dari 68.26% menjadi 81.10%, menunjukkan bahwa tuning berhasil meningkatkan kemampuan generalisasi model.
+Total kombinasi 3 x 3 x 3 x 3 = 81 Kombinasi
 
 
-4. Analisis Kelebihan & Kekurangan                                                                                                                                      
-   | Aspek          | Penjelasan                                                                                                                                                          |
-   | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Kelebihan**  | - Efektif untuk data berdimensi tinggi. <br> - Mampu menangani klasifikasi linier dan non-linier. <br> - Mendukung berbagai fungsi kernel.                          |
-   | **Kekurangan** | - Sensitif terhadap pemilihan parameter `C`, `kernel`, dan `gamma`. <br> - Waktu komputasi tinggi pada dataset besar. <br> - Kurang transparan secara interpretasi. |
-
-5. Kesimpulan Sementara
-   
-   Model SVC mengalami peningkatan performa yang paling besar setelah dilakukan tuning hyperparameter. Meskipun ada indikasi overfitting dengan akurasi training sempurna, peningkatan akurasi testing yang cukup signifikan menunjukkan model ini memiliki potensi terbaik untuk prediksi pada data baru. Evaluasi lebih lanjut disarankan untuk mengoptimalkan keseimbangan antara bias dan variance.
+- GridSearchCV: digunakan untuk menemukan kombinasi parameter terbaik.
+- cv=5: menggunakan 5-fold cross-validation.
+- scoring='r2': evaluasi berdasarkan R² Score.
+- n_jobs=-1: gunakan seluruh core CPU untuk paralelisasi.
+- verbose=1: mencetak progress pencarian grid.
 
 
-### Naive Bayes
-**Naive Bayes** adalah algoritma klasifikasi probabilistik yang didasarkan pada Teorema Bayes dengan asumsi independensi antar fitur. Model ini menghitung probabilitas setiap kelas berdasarkan distribusi fitur dan memilih kelas dengan probabilitas tertinggi. Salah satu variannya, Gaussian Naive Bayes, digunakan ketika fitur mengikuti distribusi normal. Naive Bayes dikenal cepat dan efisien, terutama untuk data berdimensi tinggi dan masalah klasifikasi teks, meskipun performanya bisa menurun ketika asumsi independensi tidak terpenuhi [[14](https://scikit-learn.org/stable/modules/naive_bayes.html)].
-
-**Tahapan Pemodelan**
-1. Baseline Model
-   
-   Model awal dibangun dengan parameter default dari `GaussianNB`. Tidak ada parameter khusus yang disetel pada tahap awal.
-
-   Hasil evaluasi model:
-   - Akurasi Training: 78.01%
-   - Akurasi Testing: 76.88%
-   Model ini kemudian disimpan sebagai baseline untuk dibandingkan setelah proses tuning
-
-2. Hyperparameter Tuning
-
-   Untuk menyempurnakan performa, dilakukan pencarian nilai optimal dari parameter `var_smoothing`. Hasil evaluasi model setelah tuning:
-   - Akurasi Training: 78.09%
-   - Akurasi Testing: 77.25%
-
-3. Perbandingan Kinerja
-   | Model                  | Akurasi Training | Akurasi Testing |
-   | ---------------------- | ---------------- | --------------- |
-   | Naive Bayes (Baseline) | 78.01%           | 76.88%          |
-   | Naive Bayes (Tuned)    | 78.09%           | 77.25%          |
-
-   Setelah tuning, akurasi training dan testing hanya mengalami peningkatan yang sangat kecil, hampir tidak signifikan. Hal ini mengindikasikan bahwa parameter default model Naive Bayes sudah cukup optimal dan tuning tidak memberikan pengaruh besar terhadap performa model.
-
-
-4. Analisis Kelebihan & Kekurangan                                                                                                                                      
-   | Aspek          | Penjelasan                                                                                                                                             |
-   | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-   | **Kelebihan**  | - Cepat dan efisien. <br> - Performa baik untuk data berdimensi tinggi. <br> - Cocok untuk klasifikasi teks dan data yang mendekati distribusi normal. |
-   | **Kekurangan** | - Asumsi independensi fitur jarang terpenuhi dalam data nyata. <br> - Kurang fleksibel dalam menangani fitur yang berkorelasi.                         |
-
-5. Kesimpulan Sementara
-   
-   Model Naive Bayes menunjukkan stabilitas performa dengan akurasi sekitar 77% pada data testing. Karena peningkatan setelah tuning sangat minimal, model ini mungkin sudah berada pada konfigurasi optimalnya dengan parameter default. Untuk peningkatan performa lebih lanjut, bisa dipertimbangkan pendekatan lain seperti fitur engineering atau penggunaan model berbeda.
 
   
 ## Evaluation
-Proyek ini berfokus pada _predictive analytics_ untuk kasus klasifikasi, **metrik utama yang digunakan adalah akurasi**. Akurasi didefinisikan sebagai:
-
-<p align="center">
-  <img src="https://latex.codecogs.com/svg.image?\Large&space;\text{Accuracy}&space;=&space;\frac{\text{Jumlah&space;prediksi&space;benar}}{\text{Total&space;seluruh&space;prediksi}}" title="Accuracy Formula" />
-</p>
 
 Akurasi merupakan metrik yang cocok digunakan ketika distribusi kelas cukup seimbang dan tujuan utamanya adalah mengukur seberapa sering model memberikan prediksi yang benar. Dalam konteks ini (prediksi penyakit kanker), distribusi kelas sudah diseimbangkan dengan metode oversampling (SMOTE), sehingga akurasi menjadi metrik yang relevan dan dapat diandalkan.
 
-### Hasil Evaluasi Model
-Evaluasi dilakukan terhadap lima model klasifikasi baik sebelum maupun sesudah proses hyperparameter tuning, dan hasilnya dirangkum dalam bentuk tabel dan grafik berikut:
+### Hasil Evaluasi
+| Model             | MAE     | RMSE    | R² Score |
+| ----------------- | ------- | ------- | -------- |
+| Linear Regression | 4177.05 | 5956.34 | 0.8069   |
+| Random Forest     | 2461.34 | 4362.76 | 0.8964   |
 
-**Tabel Perbandingan Akurasi**
-| Model         | Accuracy Before Tuning | Accuracy After Tuning |
-| ------------- | ---------------------- | --------------------- |
-| Extra Trees   | 78.90%                 | 80.00%                |
-| Random Forest | 81.10%                 | 84.22%                |
-| KNN           | 70.64%                 | 78.72%                |
-| SVC           | 68.26%                 | 81.10%                |
-| Naive Bayes   | 76.88%                 | 77.25%                |
+- Random Forest unggul dalam semua metrik, terutama R² Score yang meningkat lebih dari 11% dibanding Linear Regression.
+- Hal ini menandakan bahwa Random Forest mampu menangkap kompleksitas data dan hubungan non-linier lebih baik.
+  
+**Visualisasi Features Importance**
 
-**Visualisasi Grafik Akurasi**
+Grafik di bawah ini menunjukkan features mana yang paling berperan penting terhadap biaya pengobatan (charges)
+![image](https://github.com/user-attachments/assets/771f5df5-87f7-41f6-8eb4-28b06092b4b3)
 
-Grafik di bawah ini menunjukkan perbandingan akurasi dari setiap model sebelum dan sesudah tuning:
+Dari table tersebut, menjelaskan bahwa : 
+- Menunjukan bahwa fitur yang paling berpengaruh adalah smoker (perokok) dengan lebih dari 60%
+- Fitur sex penting (sekitar 19%)
+- Fitur age juga cukup berpengaruh
+- Fitur BMI sedikit berpengaruh (kurang dari 10%)
+- Fitur lainnya seperti children, bmi_category, region, bmi_smoker memiliki pengaruh yg sangat kecil
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/55b702e2-7286-41a2-bf65-be6ee8e0c055" alt="Gambar 8. Model Accuracy Chart" width="500"/>
-</p>
+Cross Validation untuk validasi tambahan
+```python
 
-<p align="center"><strong>Gambar 8.</strong> Model Accuracy Chart</p>
+cv_scores = cross_val_score(best_rf_model, X_train, y_train, cv=5, scoring='r2')
+print(f"\n=== Cross Validation Results ===")
+print(f"CV R² scores: {cv_scores}")
+print(f"Mean CV R²: {cv_scores.mean():.4f} (+/- {cv_scores.std() * 2:.4f})")
 
-Dari tabel akurasi dan grafik, terlihat bahwa hampir semua model mengalami peningkatan akurasi setelah tuning, meskipun tingkat peningkatannya bervariasi.
+```
+Output : 
 
-### Analisis dan Interpretasi
-- Model dengan peningkatan terbesar setelah tuning:
-  - **SVC (Support Vector Classifier)** meningkat dari 68.26% menjadi 81.10% (+12.84 poin)
-  - **KNN** meningkat dari 70.64% menjadi 78.72% (+8.08 poin)
+![image](https://github.com/user-attachments/assets/4627cfe2-36ec-43ef-a967-eefde27b8eaf)
 
-- Model dengan performa tertinggi setelah tuning:
-  - **Random Forest** dengan akurasi tertinggi sebesar 84.22%
-  - **SVC** sebagai alternatif kuat dengan akurasi 81.10%
+**Visualisasi model Random Forest : Actual vs Predicted**
+![image](https://github.com/user-attachments/assets/a294d94d-7b47-44ec-98f3-06f3b2f44899)
 
-- Model dengan peningkatan kecil setelah tuning:
-  - **Extra Trees** meningkat dari 78.90% menjadi 80.00%, menunjukkan kestabilan dan performa yang baik.
-  - **Naive Bayes** sedikit mengalami peningkatan dari 76.88% menjadi 77.25%, menunjukkan model yang relatif stabil dan tidak banyak terpengaruh tuning.
+Penjelasan :
 
-### Kesimpulan Akhir
+**Sumbu X** : Menampilkan nilai prediksi (Predicted Values) dari model Random Forest terhadap biaya asuransi.
+**Sumbu Y** : Menampilkan residual (selisih antara nilai aktual dan nilai prediksi)
+
+**Garis merah putus putus :** Merupakan garis referensi residu nol. Titik-titik yang dekat dengan garis ini menandakan prediksi yang sangat akurat.
+
+**_insights_** : 
+- Banyak titik residu berada dekat dengan garis nol, menunjukkan bahwa model memprediksi dengan akurat untuk sebagian besar data.
+- Tidak terlihat pola sistematik pada distribusi residu, ini berarti model tidak menunjukan bias serius (overfitting atau underfitting)
+
+
+
+### Kesimpulan
 Berdasarkan hasil evaluasi:
-- **Random Forest** menjadi **model terbaik** dalam proyek ini dengan akurasi tertinggi 84.22% setelah tuning, menunjukkan kehandalan model ini dalam menangani dataset.
-- **SVC** juga menunjukkan peningkatan signifikan dan performa yang baik, menjadikannya alternatif kuat kedua dengan akurasi **81.10%**.
-- **KNN** memberikan peningkatan cukup besar dan bisa menjadi opsi tambahan dengan akurasi **78.72%**.
-- **Extra Trees** dan **Naive Bayes** menunjukkan kestabilan dengan peningkatan yang relatif kecil, sehingga cocok untuk kasus di mana kestabilan dan kecepatan menjadi pertimbangan.
+**Problem 1 : Prediksi Biaya Asuransi Kesehatan** 
+-  Model seperti Linear Regression dan Random Forest digunakan untuk memprediksi biaya asuransi berdasarkan fitur demografis dan gaya hidup.
+- Hasil evaluasi menunjukkan bahwa Random Forest memiliki performa lebih baik:
+    - MAE: 2461.34 (lebih kecil dari Linear Regression)
+    - RMSE: 4362.76
+    - R²: 0.8964 (vs 0.8069 pada Linear Regression)
+- Ini menunjukkan bahwa model machine learning dapat memberikan prediksi biaya yang cukup akurat.
 
-Secara keseluruhan, **Random Forest** direkomendasikan sebagai model klasifikasi utama karena akurasinya yang tertinggi dan peningkatan performa yang signifikan setelah tuning. Namun, **SVC** dan **KNN** juga dapat menjadi pilihan yang baik sesuai kebutuhan dan konteks penggunaan.
+**Problem 2:** Faktor yang paling signifikan
+| Fitur      | Importance                      |
+| ---------- | ------------------------------- |
+| **Smoker** | Sangat dominan (lebih dari 60%) |
+| **Sex**    | Penting (sekitar 19%)           |
+| **Age**    | Cukup berpengaruh               |
+| **BMI**    | Sedikit berpengaruh             |
+| Lainnya    | Pengaruh sangat kecil           |
+
+- Berdasarkan visualisasi feature importance dari Random Forest, fitur smoker (status merokok) adalah faktor paling signifikan yang memengaruhi biaya asuransi.
+- Faktor penting lain adalah sex, age, dan bmi.
+- Informasi ini penting bagi perusahaan untuk memahami variabel yang paling memengaruhi biaya premi.
+
+**Problem 3:** Keadilan dan Proporsionalitas Premi
+- Dengan menggunakan model machine learning, perusahaan dapat:
+    - Menilai risiko individu lebih objektif berdasarkan data.
+    - Menyesuaikan premi asuransi secara proporsional terhadap variabel risiko nyata seperti usia dan status merokok.
+    - Menghindari penetapan premi yang bersifat generalisasi atau diskriminatif.
 
 ## Referensi
 
