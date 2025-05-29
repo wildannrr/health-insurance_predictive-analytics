@@ -358,6 +358,7 @@ print(f"Best parameters: {rf_grid.best_params_}")
 print(f"Best CV R² score: {rf_grid.best_score_:.4f}")
 ```
 Output: 
+
 ![image](https://github.com/user-attachments/assets/1b1d637c-9725-49d7-a2b0-d0153f64370a)
 
 
@@ -420,7 +421,11 @@ Output :
 ![image](https://github.com/user-attachments/assets/4627cfe2-36ec-43ef-a967-eefde27b8eaf)
 
 **Visualisasi model Random Forest : Actual vs Predicted**
-![image](https://github.com/user-attachments/assets/a294d94d-7b47-44ec-98f3-06f3b2f44899)
+![image](https://github.com/user-attachments/assets/7c8e6360-7bfb-479e-b27d-ff8610e6d5d4)
+
+
+![image](https://github.com/user-attachments/assets/88939cbb-9e26-475d-ae3f-c86e88861605)
+
 
 Penjelasan :
 
@@ -437,6 +442,7 @@ Penjelasan :
 
 ### Kesimpulan
 Berdasarkan hasil evaluasi:
+
 **Problem 1 : Prediksi Biaya Asuransi Kesehatan** 
 -  Model seperti Linear Regression dan Random Forest digunakan untuk memprediksi biaya asuransi berdasarkan fitur demografis dan gaya hidup.
 - Hasil evaluasi menunjukkan bahwa Random Forest memiliki performa lebih baik:
