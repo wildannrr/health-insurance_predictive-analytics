@@ -383,7 +383,7 @@ Total kombinasi 3 x 3 x 3 x 3 = 81 Kombinasi
   
 ## Evaluation
 
-Akurasi merupakan metrik yang cocok digunakan ketika distribusi kelas cukup seimbang dan tujuan utamanya adalah mengukur seberapa sering model memberikan prediksi yang benar. Dalam konteks ini (prediksi penyakit kanker), distribusi kelas sudah diseimbangkan dengan metode oversampling (SMOTE), sehingga akurasi menjadi metrik yang relevan dan dapat diandalkan.
+Akurasi merupakan metrik yang cocok digunakan ketika distribusi kelas cukup seimbang dan tujuan utamanya adalah mengukur seberapa sering model memberikan prediksi yang benar. 
 
 ### Hasil Evaluasi
 | Model             | MAE     | RMSE    | R² Score |
